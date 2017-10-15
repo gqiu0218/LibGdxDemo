@@ -36,13 +36,12 @@ public class Demo2 extends ApplicationAdapter {
 
 
         camera = new PerspectiveCamera(90, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.position.set(0f, 7f, 10f);
+        camera.position.set(0f, 7f, 100f);
         camera.translate(3, 0, 8);
         camera.lookAt(0, 0, 0);
         camera.near = 1f;
         camera.far = 400f;
         camera.update();
-
 
 
         assets = new AssetManager();
@@ -54,8 +53,9 @@ public class Demo2 extends ApplicationAdapter {
 
     private void doneLoading() {
         Model ship = assets.get("Constructor.g3dj", Model.class);
-        ModelInstance shipInstance = new ModelInstance(ship);
-        instances.add(shipInstance);
+        ModelInstance instance = new ModelInstance(ship);
+        instance.transform.setToTranslation(1, 1, 1);
+        instances.add(instance);
         loading = false;
     }
 
